@@ -1,0 +1,8 @@
+export { default as Ecommerce } from './Dashboard'
+export { default as Kanban } from './Kanban'
+export { default as Orders } from './Orders'
+export { default as Employees } from './Employees'
+export { default as Editor } from './Editor'
+export { default as Customer } from './Customer'
+export { default as ColorPicker } from './ColorPicker'
+export { default as Calendar } from './Calendar'
