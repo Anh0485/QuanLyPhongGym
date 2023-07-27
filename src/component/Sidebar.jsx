@@ -21,13 +21,14 @@ const Sidebar = () => {
             {activeMenu && (
                 <>
                     <div className='flex justify-between items-center'>
-                        <Link to="/" onClick={() => setActiveMenu(false)} className="items-center gap-3 ml-3 mt-4 
-                    flex text-xl font-extrabold tracking-tight dark:text-white text-slate-900 items-center">
-                            <SiShopware />
+                        <Link to="/"
+                            onClick={() => setActiveMenu(false)}
+                            className="items-center gap-3 ml-3 mt-4 flex text-xl font-extrabold tracking-tight dark:text-white text-white items-center" >
+                            {/* <SiShopware /> */}
                             <span>Gym</span>
                         </Link>
                         <TooltipComponent content="Menu" position='BottomCenter'>
-                            <button type="button" onClick={()=> setActiveMenu((prevActiveMenu)=> !prevActiveMenu)} className='text-xl rounded-full p-3 hover:bg-light-gray mt-4 block md:hidden'>
+                            <button type="button" onClick={() => setActiveMenu((prevActiveMenu) => !prevActiveMenu)} className='text-xl rounded-full p-3 hover:bg-light-gray mt-4 block md:hidden'>
                                 <MdOutlineCancel />
                             </button>
                         </TooltipComponent>
@@ -37,9 +38,12 @@ const Sidebar = () => {
                             <NavLink to={`/${item.name}`}
                                 key={item.name}
                                 onClick={() => { }}
-                                className={({ isActive }) => isActive ? activeLink : normalLink} >
+                                className={({ isActive }) => isActive ? activeLink : normalLink}
+                                style={{ color: 'white' }}
+                            >
                                 {item.icon}
-                                <span className=''>{item.title}</span>
+
+                                <span className='' style={{ color: 'white' }}>{item.title}</span>
                             </NavLink>
                         ))}
                     </div>

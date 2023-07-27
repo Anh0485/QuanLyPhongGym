@@ -7,6 +7,7 @@ import { TooltipComponent } from '@syncfusion/ej2-react-popups'
 import { Navbar, Footer, Sidebar, ThemeSettings } from "./component";
 import { Calendar, ColorPicker, Customer, Ecommerce, Editor, Employees, Kanban, Orders } from './pages';
 import { useStateContext } from "./contexts/ContextProvider";
+import DashBoard from "./pages/Dashboard";
 function App() {
   const { activeMenu, setActiveMenu } = useStateContext()
 
@@ -23,7 +24,7 @@ function App() {
           </TooltipComponent>
         </div>
         {activeMenu ? (
-          <div className="w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white">
+          <div className="w-72 fixed sidebar" style={{ backgroundColor: 'rgb(26, 19, 99)' }}>
             <Sidebar />
           </div>
         ) : (
@@ -44,8 +45,8 @@ function App() {
 
           <Routes>
             {/* Dashboard */}
-            <Route path="/" element={<Ecommerce />} />
-            <Route path="/ecommerce" element={<Ecommerce />} />
+            <Route path="/" element={<DashBoard />} />
+            <Route path="/dashboard" element={<DashBoard />} />
 
             {/* Page */}
             <Route path="/orders" element={<Orders />} />
