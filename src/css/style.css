@@ -1,0 +1,71 @@
+.btn-cancel {
+    border: 2px solid;
+    border-radius: 12px;
+    padding: 3px 21px;
+    border-color: #1A1363;
+    color: #1A1363;
+}
+
+.btn-member {
+    padding: 3px 21px;
+    border: 2px solid;
+    background-color: #1A1363;
+    border-radius: 12px;
+    color: white;
+    font-weight: 600;
+}
+
+.btn-edit {
+    color: rgb(43, 43, 43);
+    background-color: #fff;
+    padding: 3px 10px;
+    border-radius: 12px;
+}
+
+.btn-previous {
+    border-radius: 12px;
+    background-color: white;
+    padding: 3px 21px;
+}
+
+.btn-next {
+    padding: 3px 21px;
+    border-radius: 12px;
+    background-color: #C7C1FF;
+    margin-left: 10px;
+}
+
+/* text */
+.text-line {
+    font-size: 32px;
+    line-height: 48px;
+    color: #DEBA3B;
+    font-weight: 700;
+}
+
+.text-title {
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 48px;
+    color: #1A1363;
+}
+
+.select-number {
+    border-radius: 12px;
+    width: 59px;
+    background-color: #5D57A3;
+    color: white;
+    text-align: center;
+    height: 33px;
+}
+
+
+/* input */
+.input-search {
+    height: 33px;
+    background-color: rgb(93, 87, 163);
+    width: 331px;
+    color: white;
+    border-radius: 12px;
+    padding-left: 12px;
+}

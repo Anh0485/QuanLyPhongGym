@@ -8,7 +8,7 @@ import { useStateContext } from '../contexts/ContextProvider';
 // import { links } from '../data/dummy.js'
 import { links } from '../data/data'
 const Sidebar = () => {
-    const { activeMenu, setActiveMenu } = useStateContext()
+    const { activeMenu, setActiveMenu, currentColor } = useStateContext()
 
     const activeLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-md m-2';
 
@@ -39,7 +39,9 @@ const Sidebar = () => {
                                 key={item.name}
                                 onClick={() => { }}
                                 className={({ isActive }) => isActive ? activeLink : normalLink}
-                                style={{ color: 'white' }}
+                                style={({ isActive }) => ({
+                                    backgroundColor: isActive ? currentColor : '',
+                                })}
                             >
                                 {item.icon}
 

@@ -5,24 +5,29 @@ import { FiSettings } from 'react-icons/fi'
 import { TooltipComponent } from '@syncfusion/ej2-react-popups'
 
 import { Navbar, Footer, Sidebar, ThemeSettings } from "./component";
-import { Calendar, ColorPicker, Customer, Ecommerce, Editor, Employees, Kanban, Orders } from './pages';
 import { useStateContext } from "./contexts/ContextProvider";
 import DashBoard from "./pages/Dashboard";
+import Registration from "./pages/Registration";
+import Customer from "./pages/Customer";
 function App() {
-  const { activeMenu, setActiveMenu } = useStateContext()
+  const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
 
   // const activeMenu = true;
   return (
     <BrowserRouter>
       <div className="flex relative dark:bg-main-dark-bg">
-        <div className="fixed right-4 bottom-4" style={{ zIndex: '1000' }}>
+        {/* <div className="fixed right-4 bottom-4" style={{ zIndex: '1000' }}>
           <TooltipComponent content="Settings" position="Top">
-            <button type="button" className="text-3xl p-3 hover:drop-shadow-xl hover:bg-light-gray
-             text-white" style={{ background: 'blue', borderRadius: '50%' }} >
+            <button
+              type="button"
+              onClick={() => setThemeSettings(true)}
+              className="text-3xl p-3 hover:drop-shadow-xl hover:bg-light-gray
+             text-white"
+              style={{ background: 'blue', borderRadius: '50%' }} >
               <FiSettings />
             </button>
           </TooltipComponent>
-        </div>
+        </div> */}
         {activeMenu ? (
           <div className="w-72 fixed sidebar" style={{ backgroundColor: 'rgb(26, 19, 99)' }}>
             <Sidebar />
@@ -33,34 +38,30 @@ function App() {
           </div>
         )}
         <div className={
-          `dark:bg-main-bg bg-main-bg min-h-screen w-full ${activeMenu ? 'md:ml-72' : 'flex-2'}`
+          activeMenu
+            ? 'dark:bg-main-dark-bg  bg-main-bg min-h-screen md:ml-72 w-full  '
+            : 'bg-main-bg dark:bg-main-dark-bg  w-full min-h-screen flex-2 '
         }>
           <div className="fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full">
             <Navbar />
+          </div>
+          <div>
+            <Routes>
+              {/* Dashboard */}
+              <Route path="/" element={<DashBoard />} />
+              <Route path="/dashboard" element={<DashBoard />} />
+              <Route path="/registration" element={<Registration />} />
+              <Route path="/viewmember" element={<Customer />} />
+
+            </Routes>
+
           </div>
         </div>
 
         <div>
           {/* Tạo đường dẫn mục trong navbar */}
 
-          <Routes>
-            {/* Dashboard */}
-            <Route path="/" element={<DashBoard />} />
-            <Route path="/dashboard" element={<DashBoard />} />
 
-            {/* Page */}
-            <Route path="/orders" element={<Orders />} />
-            <Route path="/employees" element={<Employees />} />
-            <Route path="/customers" element={<Customer />} />
-
-            {/* App */}
-            <Route path="/kanban" element={<Kanban />} />
-            <Route path="/editor" element={<Editor />} />
-            <Route path="/calendar" element={<Calendar />} />
-            <Route path="/color-picker" element={<ColorPicker />} />
-
-
-          </Routes>
         </div>
 
       </div>

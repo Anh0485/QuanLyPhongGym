@@ -7,6 +7,9 @@ module.exports = {
             body: ['Open Sans', 'sans-serif'],
         },
         extend: {
+            left: {
+                310: '310px',
+            },
             fontSize: {
                 14: '14px',
             },
