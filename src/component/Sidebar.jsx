@@ -1,21 +1,42 @@
-import React from 'react'
-import { Link, NavLink } from 'react-router-dom';
+import React, { useState } from 'react'
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { SiShopware } from 'react-icons/si';
 import { MdOutlineCancel, mdOutlineCancel } from 'react-icons/md';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 import { useStateContext } from '../contexts/ContextProvider';
 import '../css/style.css'
 
+
 // import { links } from '../data/dummy.js'
 import { links } from '../data/data'
 const Sidebar = () => {
-    const { activeMenu, setActiveMenu, currentColor } = useStateContext()
+
+    const location = useLocation();
+    const { activeMenu, setActiveMenu, currentColor, currentTextColor } = useStateContext()
 
 
 
-    const activeLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-md m-2';
+    const activeLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-md m-2 text-gray-700 ';
 
     const normalLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray m-2'
+
+    const isActive = (name) => location.pathname === `/${name}`;
+
+    const [hovered, setHovered] = useState(false);
+
+    const activeText = {
+        color: "#1A1363",
+        fontWeight: 700
+    };
+
+    const normalText = {
+        color: "#fff"
+    };
+
+    const hoverLink = {
+        color: "#1A1363"
+    };
+
 
     return (
         <div className="ml-3 h-screen
@@ -46,9 +67,18 @@ const Sidebar = () => {
                                     backgroundColor: isActive ? currentColor : '',
                                 })}
                             >
-                                <span className='sidebar-item'>
-                                    {item.icon}</span>
-                                <span className='sidebar-item' style={{ color: '#fff', }}>{item.title}</span>
+                                <span
+                                    onMouseEnter={() => setHovered(true)}
+                                    onMouseLeave={() => setHovered(false)}
+                                    style={isActive(item.name) ? activeText : (hovered ? hoverLink : normalText)}
+                                    // style={isActive(item.name) ? activeText : normalText}
+                                    className='sidebar-item'
+                                >
+                                    {item.icon}
+                                </span>
+                                <span className='sidebar-item'
+                                    style={isActive(item.name) ? activeText : normalText}
+                                >{item.title}</span>
                             </NavLink>
                         ))}
                     </div>

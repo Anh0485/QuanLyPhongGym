@@ -1,10 +1,11 @@
 /* sidebar */
-.sidebar-item{
-    color:'#fff',
-    
-
+.sidebar-item {
+    color: #fff,
 }
 
+.sidebar-item:hover {
+    color: #1A1363;
+}
 
 .btn-cancel {
     border: 2px solid;

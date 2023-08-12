@@ -12,6 +12,7 @@ import Customer from "./pages/Customer";
 import Login from './pages/Login'
 import HomePage from "./pages/HomePage";
 import Coaches from "./pages/Coaches";
+import PrivateRoute from "./PrivateRoute";
 function App() {
   const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
 
@@ -19,14 +20,16 @@ function App() {
   return (
 
     <Router>
-
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route path="/" exact element={<DashBoard />} />
-        <Route path="/dashboard" element={<DashBoard />} />
-        <Route path="/registration" element={<Registration />} />
-        <Route path="/viewmember" element={<Customer />} />
-        <Route path="/coaches" element={<Coaches />} />
+        <Route path="/" element={<PrivateRoute />}>
+          <Route index element={<DashBoard />} />
+          <Route path="/dashboard" element={<DashBoard />} />
+          <Route path="/registration" element={<Registration />} />
+          <Route path="/viewmember" element={<Customer />} />
+          <Route path="/coaches" element={<Coaches />} />
+        </Route>
+
       </Routes>
     </Router>
 
